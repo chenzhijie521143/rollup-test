@@ -9,17 +9,22 @@ import commonjs from '@rollup/plugin-commonjs';
 import replace from 'rollup-plugin-replace';
 import path from 'path';
 
+import pkg from '../package.json';
+
 export default {
   input: 'src/index.tsx',
   output: {
     file: 'example/dist/bundle.js',
     format: 'umd',
+    //当入口文件有export时，'umd'格式必须指定name
+    //这样，在通过<script>标签引入时，才能通过name访问到export的内容。
+    name: pkg.name,
   },
   plugins: [
     typescript(),
     resolve(),
     commonjs(),
-    json(),
+    json(), // 支持json 文件导入
     babel({
       exclude: 'node_modules/**',
     }),
