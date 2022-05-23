@@ -8,6 +8,7 @@ import typescript from '@rollup/plugin-typescript';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import replace from 'rollup-plugin-replace';
+import postcss from 'rollup-plugin-postcss';
 import path from 'path';
 
 import pkg from '../package.json';
@@ -29,7 +30,8 @@ export default {
     babel({
       exclude: 'node_modules/**',
     }),
-    terser(),
+    postcss(),
+    // terser(),
     // 热更新 监听本地文件
     livereload('example/dist'),
     serve({
