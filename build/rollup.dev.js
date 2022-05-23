@@ -1,6 +1,7 @@
 
 import babel from 'rollup-plugin-babel';
 import serve from 'rollup-plugin-serve';
+import { terser } from 'rollup-plugin-terser';
 import livereload from 'rollup-plugin-livereload';
 import json from '@rollup/plugin-json';
 import typescript from '@rollup/plugin-typescript';
@@ -28,6 +29,7 @@ export default {
     babel({
       exclude: 'node_modules/**',
     }),
+    terser(),
     // 热更新 监听本地文件
     livereload('example/dist'),
     serve({
