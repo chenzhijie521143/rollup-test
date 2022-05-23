@@ -4,11 +4,7 @@
       "@babel/preset-env",
       {
         "modules": false, // 设置 "modules": false ，否则 Babel 会在 Rollup 有机会做处理之前，将我们的模块转成 CommonJS ，导致 Rollup 的一些处理失败。
-        "corejs": 2,
-        "targets": {
-          "chrome": "67"
-        },
-        "useBuiltIns": "usage"
+        "useBuiltIns": "usage" // 只加载使用的polyfills
       }
     ],
     "@babel/preset-react"
