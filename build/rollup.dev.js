@@ -3,18 +3,20 @@ import babel from 'rollup-plugin-babel';
 import serve from 'rollup-plugin-serve';
 import livereload from 'rollup-plugin-livereload';
 import json from '@rollup/plugin-json';
+import typescript from '@rollup/plugin-typescript';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import replace from 'rollup-plugin-replace';
 import path from 'path';
 
 export default {
-  input: 'src/index.jsx',
+  input: 'src/index.tsx',
   output: {
     file: 'example/dist/bundle.js',
     format: 'umd',
   },
   plugins: [
+    typescript(),
     resolve(),
     commonjs(),
     json(),
