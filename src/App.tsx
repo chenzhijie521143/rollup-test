@@ -3,9 +3,14 @@ import config from './config.json';
 import './index.less';
 
 const App = () => {
+  const getTitle =()=>{
+    return config.title
+  }
+  console.log(Array.from([]));
+  
   return (
     <div className="title">
-      {config.title}
+      {getTitle()}
     </div>
   );
 }

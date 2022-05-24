@@ -39,7 +39,7 @@ export default {
       ],
       extract: 'css/index.css', // 单独抽离css文件
     }),
-    terser(), // 压缩js代码
+    // terser(), // 压缩js代码
     livereload('example/dist'),  // 热更新 监听本地文件
     serve({
       // open: true, // 自动打开页面
