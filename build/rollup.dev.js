@@ -47,7 +47,7 @@ export default {
       sourcemap: true,
       contentBase: path.join(__dirname, '../example/'),
     }),
-    replace({
+    replace({ // 设置环境变量
       'process.env.NODE_ENV': JSON.stringify('production')
     })
   ]
