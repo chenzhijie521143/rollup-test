@@ -9,6 +9,8 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import replace from 'rollup-plugin-replace';
 import postcss from 'rollup-plugin-postcss';
+import autoprefixer from 'autoprefixer';
+import cssnano from 'cssnano';
 import path from 'path';
 
 import pkg from '../package.json';
@@ -24,16 +26,21 @@ export default {
   },
   plugins: [
     typescript(),
-    resolve(),
-    commonjs(),
+    resolve(), // 在node_modules中找到并捆绑第三方依赖项
+    commonjs(), // 用来将 CommonJS 转换成 ES6 模块
     json(), // 支持json 文件导入
     babel({
       exclude: 'node_modules/**',
     }),
-    postcss(),
-    // terser(),
-    // 热更新 监听本地文件
-    livereload('example/dist'),
+    postcss({
+      plugins: [
+        autoprefixer(), // 加前缀
+        cssnano(), // 压缩css
+      ],
+      extract: 'css/index.css', // 单独抽离css文件
+    }),
+    terser(), // 压缩js代码
+    livereload('example/dist'),  // 热更新 监听本地文件
     serve({
       // open: true, // 自动打开页面
       port: 8000,

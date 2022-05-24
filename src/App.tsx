@@ -1,6 +1,6 @@
 import React from 'react';
 import config from './config.json';
-import './index.css';
+import './index.less';
 
 const App = () => {
   return (
