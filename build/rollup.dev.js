@@ -1,10 +1,11 @@
 
-import babel from 'rollup-plugin-babel';
+// import babel from 'rollup-plugin-babel';
+import babel from '@rollup/plugin-babel';
 import serve from 'rollup-plugin-serve';
 import { terser } from 'rollup-plugin-terser';
 import livereload from 'rollup-plugin-livereload';
 import json from '@rollup/plugin-json';
-import typescript from '@rollup/plugin-typescript';
+// import typescript from '@rollup/plugin-typescript';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import replace from 'rollup-plugin-replace';
@@ -15,6 +16,10 @@ import alias from '@rollup/plugin-alias';
 import path from 'path';
 
 import pkg from '../package.json';
+
+const extensions = [
+  '.js', '.jsx', '.ts', '.tsx',
+];
 
 export default {
   input: 'src/index.tsx',
@@ -33,11 +38,12 @@ export default {
     }
   ],
   plugins: [
-    typescript(),
-    resolve(), // 在node_modules中找到并捆绑第三方依赖项
+    // typescript(),
+    resolve({ extensions }), // 在node_modules中找到并捆绑第三方依赖项
     commonjs(), // 用来将 CommonJS 转换成 ES6 模块
     json(), // 支持json 文件导入
     babel({
+      extensions,
       exclude: 'node_modules/**',
     }),
     postcss({
