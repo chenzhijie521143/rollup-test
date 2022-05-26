@@ -17,13 +17,19 @@ import pkg from '../package.json';
 
 export default {
   input: 'src/index.tsx',
-  output: {
-    file: 'example/dist/bundle.js',
-    format: 'umd',
-    //当入口文件有export时，'umd'格式必须指定name
-    //这样，在通过<script>标签引入时，才能通过name访问到export的内容。
-    name: pkg.name,
-  },
+  output: [
+    {
+      file: 'example/dist/bundle.js',
+      format: 'umd',
+      //当入口文件有export时，'umd'格式必须指定name
+      //这样，在通过<script>标签引入时，才能通过name访问到export的内容。
+      name: pkg.name,
+    },
+    {
+      file: 'example/dist/bundle.es.js',
+      format: 'es',
+    }
+  ],
   plugins: [
     typescript(),
     resolve(), // 在node_modules中找到并捆绑第三方依赖项
