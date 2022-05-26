@@ -11,12 +11,14 @@ import replace from 'rollup-plugin-replace';
 import postcss from 'rollup-plugin-postcss';
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
+import alias from '@rollup/plugin-alias';
 import path from 'path';
 
 import pkg from '../package.json';
 
 export default {
   input: 'src/index.tsx',
+  external: [],
   output: [
     {
       file: 'example/dist/bundle.js',
@@ -45,13 +47,18 @@ export default {
       ],
       extract: 'css/index.css', // 单独抽离css文件
     }),
+    alias({
+      entries: [
+        { find: '@', replacement: path.join(__dirname, '../src') },
+      ]
+    }),
     // terser(), // 压缩js代码
-    livereload('example/dist'),  // 热更新 监听本地文件
+    livereload(path.join(__dirname, '../example/dist')),  // 热更新 监听本地文件
     serve({
       // open: true, // 自动打开页面
       port: 8000,
       sourcemap: true,
-      contentBase: path.join(__dirname, '../example/'),
+      contentBase: path.join(__dirname, '../example'),
     }),
     replace({ // 设置环境变量
       'process.env.NODE_ENV': JSON.stringify('production')
