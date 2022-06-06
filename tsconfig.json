@@ -11,7 +11,7 @@
     "paths": {
       "@/*": ["./src/*"],
     }, 
-    "declarationDir": "dist/types",
+    "declarationDir": "types",
     "declaration": true,
   },
   "include": [

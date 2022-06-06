@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "npm run start",
     "start": "rm -rf example/dist && yarn && rollup -wc ./build/rollup.dev.js",
-    "build": "rm -rf dist && yarn build:types && rollup -c ./build/rollup.build.js",
+    "build": "rm -rf dist && rollup -c ./build/rollup.build.js",
     "build:types": "tsc --emitDeclarationOnly",
     "type-check": "tsc --noEmit",
     "type-check:watch": "tsc --noEmit --watch"

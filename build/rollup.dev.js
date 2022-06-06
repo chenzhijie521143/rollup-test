@@ -33,9 +33,9 @@ export default {
     sourcemap: true
   },
   plugins: [
-    typescript({
-      // "declarationDir": "example/dist",
-    }),
+    typescript(
+      { tsconfig: './tsconfig.json' }
+    ),
     resolve({ extensions }), // 在node_modules中找到并捆绑第三方依赖项
     commonjs(), // 用来将 CommonJS 转换成 ES6 模块
     json(), // 支持json 文件导入
