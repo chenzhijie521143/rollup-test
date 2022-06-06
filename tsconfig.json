@@ -1,14 +1,18 @@
 {
   "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
-    "target": "es5",
-    "module":"esnext",
+    "target": "esnext",
+    "module": "esnext",
+    "strict": true,
     "jsx": "react",
     "lib": ["es2015", "es2016", "es2017", "dom"],
     "baseUrl": ".",   
     "paths": {
       "@/*": ["./src/*"],
     }, 
+    "declarationDir": "dist/types",
+    "declaration": true,
   },
   "include": [
     "src/**/*"

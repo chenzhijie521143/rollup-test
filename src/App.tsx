@@ -3,7 +3,10 @@ import { a } from '@/utils';
 import config from './config.json';
 import './index.less';
 
-const App = () => {
+interface IProps {
+  title: string
+}
+const App = ({ title }: IProps) => {
   const getTitle = () => {
     return config.title
   }
@@ -12,7 +15,7 @@ const App = () => {
 
   return (
     <div className="title">
-      {getTitle()}333
+      {getTitle()}333{title}
     </div>
   );
 }
