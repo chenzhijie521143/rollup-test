@@ -7,7 +7,8 @@
     "dev": "npm run start",
     "start": "rm -rf example/dist && yarn && rollup -wc ./build/rollup.dev.js",
     "build": "rm -rf dist && rollup -c ./build/rollup.build.js",
-    "build:types": "tsc --emitDeclarationOnly",
+    "build:babel": "rm -rf dist && yarn build:types && rollup -c ./build/rollup.build.babel.js",
+    "build:types": "tsc -b ./tsconfig.types.json",
     "type-check": "tsc --noEmit",
     "type-check:watch": "tsc --noEmit --watch"
   },
