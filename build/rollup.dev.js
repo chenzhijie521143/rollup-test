@@ -13,6 +13,7 @@ import postcss from 'rollup-plugin-postcss';
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 import alias from '@rollup/plugin-alias';
+import eslint from '@rollup/plugin-eslint';
 import path from 'path';
 
 import pkg from '../package.json';
@@ -33,6 +34,11 @@ export default {
     sourcemap: true
   },
   plugins: [
+    eslint({
+      throwOnError: true, // lint 结果有错误将会抛出异常
+      throwOnWarning: true,
+      include: ['src/**/*.{ts,tsx,js,jsx}'],
+    }),
     typescript(
       { tsconfig: './tsconfig.json' }
     ),

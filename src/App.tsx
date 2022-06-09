@@ -4,20 +4,21 @@ import config from './config.json';
 import './index.less';
 
 interface IProps {
-  title: string
+  title: string;
 }
-const App = ({ title }: IProps) => {
+function App({ title }: IProps) {
   const getTitle = () => {
-    return config.title
-  }
-  a()
+    return config.title;
+  };
+  a();
   console.log(Array.from([]));
 
   return (
     <div className="title">
-      {getTitle()}333{title}
+      {getTitle()}
+      {title}
     </div>
   );
 }
 
-export default App
+export default App;
