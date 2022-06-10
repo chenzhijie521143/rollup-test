@@ -11,7 +11,7 @@ function App({ title }: IProps) {
     return config.title;
   };
   a();
-  console.log(Array.from([]));
+  // console.log(Array.from([]));
 
   return (
     <div className="title">

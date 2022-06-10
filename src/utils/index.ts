@@ -1,6 +1,6 @@
 export function a() {
-  console.log('aasasfasf');
+  // console.log('aasasfasf');
 }
 export function b() {
-  console.log('b');
+  // console.log('b');
 }
