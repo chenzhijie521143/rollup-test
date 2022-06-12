@@ -5,8 +5,8 @@ import serve from 'rollup-plugin-serve';
 import { terser } from 'rollup-plugin-terser';
 import livereload from 'rollup-plugin-livereload';
 import json from '@rollup/plugin-json';
-// import typescript from '@rollup/plugin-typescript';
-import typescript from 'rollup-plugin-typescript2';
+import typescript from '@rollup/plugin-typescript';
+// import typescript from 'rollup-plugin-typescript2';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import replace from 'rollup-plugin-replace';
@@ -40,16 +40,16 @@ export default {
       throwOnWarning: true,
       include: ['src/**/*.{ts,tsx,js,jsx}'],
     }),
-    typescript(
-      { tsconfig: './tsconfig.json' }
-    ),
+    // typescript(
+    //   { tsconfig: './tsconfig.json' }
+    // ),
     resolve({ extensions }), // 在node_modules中找到并捆绑第三方依赖项
     commonjs(), // 用来将 CommonJS 转换成 ES6 模块
     json(), // 支持json 文件导入
-    // babel({
-    //   extensions,
-    //   exclude: 'node_modules/**',
-    // }),
+    babel({
+      extensions,
+      exclude: 'node_modules/**',
+    }),
     postcss({
       plugins: [
         autoprefixer(), // 加前缀
