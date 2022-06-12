@@ -10,7 +10,8 @@
     "build:babel": "rm -rf dist && yarn build:types && rollup -c ./build/rollup.build.babel.js",
     "build:types": "tsc -b ./tsconfig.types.json",
     "type-check": "tsc --noEmit",
-    "type-check:watch": "tsc --noEmit --watch"
+    "type-check:watch": "tsc --noEmit --watch",
+    "lint": "eslint --ext js,ts,tsx src"
   },
   "author": "chenzhijie",
   "license": "ISC",
